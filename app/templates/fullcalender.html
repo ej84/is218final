@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <link href='fullcalendar/main.css' rel='stylesheet' />
+    <script src='fullcalendar/main.js'></script>
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          plugins: [ googleCalendarPlugin ],
+          googleCalendarApiKey: '196441542111-43gv7tnk68qbuned3opdflk46qs2todj.apps.googleusercontent.com',
+          events: {
+              googleCalendarId: 'jdc56@njit.edu'
+          }
+        });
+        calendar.render();
+      });
+
+    </script>
+  </head>
+  <body>
+    <div id='calendar'></div>
+  </body>
+</html>
