@@ -11,6 +11,10 @@
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
+{% block style %}
+{% endblock %}
+{% block script %}
+{% endblock %}
 {% if user %}
     <title>Welcome to {{ user.username }}'s site</title>
     {% else %}
@@ -34,14 +38,16 @@
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
+            <a class="nav-link" href="/fullcalendar/">Calendar <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
             <a class="nav-link" href="/api/v1/players">Players API JSON endpoint <span class="sr-only">(current)</span></a>
         </li>
-        <li>
-            <li class="nav-item active">
+        <li class="nav-item active">
             <a class="nav-link" href="https://127.0.0.1:5000/">Go back to Profile <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-            <a class="btn btn-success pl-2 lr-2 ml-3" href="/players/new">Add +<span class="sr-only">(current)</span></a>
+            <a class="btn btn-success pl-2 lr-2 ml-3" href="/players/new">Add Player+<span class="sr-only">(current)</span></a>
         </li>
     </ul>
   </div>

@@ -55,6 +55,11 @@ def form_update_post(player_id):
     return redirect("/", code=302)
 
 
+@app.route('/fullcalendar/', methods=['GET'])
+def calendar_get():
+    return render_template('fullcalendar.html', title='Calendar')
+
+
 @app.route('/players/new', methods=['GET'])
 def form_insert_get():
     return render_template('new.html', title='New Player Form')
