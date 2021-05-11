@@ -3,11 +3,11 @@ FROM python:3.8
 
 EXPOSE 5000
 
-WORKDIR ./
+WORKDIR /authapp
 
-COPY requirements.txt ./
+COPY requirements.txt /authapp
 RUN pip install  -r requirements.txt --upgrade pip
 
-COPY . /
+COPY . /authapp
 
 CMD python app.py
