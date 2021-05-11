@@ -5,8 +5,10 @@ from flask import render_template
 from flaskext.mysql import MySQL
 from pymysql.cursors import DictCursor
 
+
 app = Flask(__name__)
 mysql = MySQL(cursorclass=DictCursor)
+
 
 app.config['MYSQL_DATABASE_HOST'] = 'db'
 app.config['MYSQL_DATABASE_USER'] = 'root'
@@ -85,7 +87,7 @@ def form_delete_post(player_id):
 
 
 @app.route('/api/v1/players', methods=['GET'])
-def api_browse() -> str:
+def api_browse() -> Response:
     cursor = mysql.get_db().cursor()
     cursor.execute('SELECT * FROM tblPlayersImport')
     result = cursor.fetchall()
@@ -95,7 +97,7 @@ def api_browse() -> str:
 
 
 @app.route('/api/v1/players/<int:player_id>', methods=['GET'])
-def api_retrieve(player_id) -> str:
+def api_retrieve(player_id) -> Response:
     cursor = mysql.get_db().cursor()
     cursor.execute('SELECT * FROM tblPlayersImport WHERE id=%s', player_id)
     result = cursor.fetchall()
@@ -105,7 +107,7 @@ def api_retrieve(player_id) -> str:
 
 
 @app.route('/api/v1/players/', methods=['POST'])
-def api_add() -> str:
+def api_add() -> Response:
     content = request.json
     cursor = mysql.get_db().cursor()
     inputData = (content['Name'], content['Team'], content['Position'], content['Height_inches'], content['Weight_lbs'], content['Age'])
@@ -117,7 +119,7 @@ def api_add() -> str:
 
 
 @app.route('/api/v1/players/<int:player_id>', methods=['PUT'])
-def api_edit(player_id) -> str:
+def api_edit(player_id) -> Response:
     cursor = mysql.get_db().cursor()
     content = request.json
     inputData = (content['Name'], content['Team'], content['Position'], content['Height_inches'], content['Weight_lbs'],
@@ -131,7 +133,7 @@ def api_edit(player_id) -> str:
 
 
 @app.route('/api/v1/players/<int:player_id>', methods=['DELETE'])
-def api_delete(player_id) -> str:
+def api_delete(player_id) -> Response:
     cursor = mysql.get_db().cursor()
     sql_delete_query = """DELETE FROM tblPlayersImport WHERE id = %s """
     cursor.execute(sql_delete_query, player_id)
