@@ -1,25 +1,51 @@
 {% extends "layout.html" %}
-{% block content %}
-  <head>
-    <link href='fullcalendar/main.css' rel='stylesheet' />
-    <script src='fullcalendar/main.js'></script>
-    <script>
+{%  block style %}
+    <link href="{{ url_for('static', filename='main.css') }}" rel='stylesheet' />
+{% endblock %}
+{%  block script %}
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+    <script type='text/javascript'>
 
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
+
         var calendar = new FullCalendar.Calendar(calendarEl, {
-          plugins: [ googleCalendarPlugin ],
-          googleCalendarApiKey: '196441542111-43gv7tnk68qbuned3opdflk46qs2todj.apps.googleusercontent.com',
-          events: {
-              googleCalendarId: 'jdc56@njit.edu'
-          }
+            displayEventTime: false,
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek'
+             },
+            googleCalendarApiKey: 'AIzaSyBMoj262LWmXNukAlLwtrTbwOLxVtOAoVI',
+
+            events: 'iqbm6tuucbju8upsje18dmpnl4@group.calendar.google.com',
+
+            eventClick: function(arg) {
+
+                window.open(arg.event.url, 'google-calendar-event', 'width=700,height=600');
+
+                arg.jsEvent.preventDefault()
+            },
+
+            loading: function(bool) {
+                document.getElementById('loading').style.display = bool ? 'block' : 'none';
+            }
         });
+
         calendar.render();
+        var Timer = setInterval(update, 300000);
+
+        function update() {
+            calendar.refetchEvents()
+
+        }
       });
 
     </script>
-  </head>
-  <body>
-    <div id='calendar'></div>
-  </body>
+{% endblock %}
+
+{% block content %}
+
+  <div id='calendar'></div>
+
 {% endblock %}
