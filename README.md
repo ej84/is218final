@@ -4,6 +4,7 @@ This project features a web application that demostrates statistics for MLB play
 The web applications features the use of Oauth2 / OpenID login, Google Calendar intergration, and Redis Pub/Sub messaging system.
 
 ### Feature: Oauth2 / OpenID login by Richard Jeong:
+This feature is displayed when you run the app located in the authapp directory. It requires you to identify yourself with your google account. Once you are recognized by the authentication system, you are going to get your logged in user web page with your name, your gmail address, and the logout link as well as database connection link "See Database" which redirect to the database diplayed web page.
 
 ### Feature: Google Calendar intergration by Juan Ceballos:
 This feature is accessable on the top of the web application. It connects to a calendar that is connected to a google calendar.  
