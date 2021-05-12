@@ -1,7 +1,7 @@
 ### IS 218 Final Project
 ### Author: Richard Jeong, Juan Ceballos, Mohammed F Syed
 This project features a web application that demostrates statistics for MLB players.  
-The web applications features the use of Oauth2 / OpenID login, Google Calendar intergration, and Redis Pub/Sub messaging system.
+The web applications features the use of Oauth2 / OpenID login, Google Calendar intergration, and a Realtime Chat messaging system using Flask-SocketIO.
 
 ### Feature: Oauth2 / OpenID login by Richard Jeong:
 This feature is displayed when you run the app located in the authapp directory. It requires you to identify yourself with your google account. Once you are recognized by the authentication system, you are going to get your logged in user web page with your name, your gmail address, and the logout link as well as database connection link "See Database" which redirect to the database diplayed web page.
@@ -12,7 +12,11 @@ Demostrated in a month format, the user can click on an event and a window shows
 From here a user can create, modify, and remove events though Google Calendar. With the use of a page refresh or simply  
 waitng 5 minutes the web application with reload any changes made in Google Calendar. This can be used to plan  
 and remind user of future baseball games and events.
-### Feature: Redis Pub/Sub login by Mohammed F Syed:
+
+### Feature: Realtime Chat System using Flask-SocketIO by Mohammed F Syed:
+Repository Link: https://github.com/MFaizSyed/Chat-App
+This feature is a realtime chat system which allows multiple users to create custom usernames and join custom rooms. Users are notified by who joins the room and can interact accordingly. There is a chatbox where messages are supposed to be presented. Additionally, there is a feature to leave the room. This application utilizies Flask, SocketIO, and Flask-SocketIO. In addition to python and HTML/CSS code, it contains Bootstrap and Javascript for functionality. 
+
 
 ### Set Up:
 1. Download the repo or clone it in Pycharm.    
